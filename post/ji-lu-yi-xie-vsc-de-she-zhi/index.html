@@ -1,0 +1,210 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>记录一些vsc的设置 | Gridea</title>
+<link rel="shortcut icon" href="https://byakuyaLu.github.io/favicon.ico?v=1628649964441">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://byakuyaLu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="记录一些vsc的设置 | Gridea - Atom Feed" href="https://byakuyaLu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="1. 如何在markdown中打zzn直接出ZN\mathbb{Z}_NZN​呢
+1.1 打开markdown中的quickSuggestion功能
+
+ctrl+shift+p 搜索setting.json 或者 打开设置右上角点出json..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://byakuyaLu.github.io">
+  <img class="avatar" src="https://byakuyaLu.github.io/images/avatar.png?v=1628649964441" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              记录一些vsc的设置
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-08-11
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="1-如何在markdown中打zzn直接出mathbbz_n呢">1. 如何在markdown中打zzn直接出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi mathvariant="double-struck">Z</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">\mathbb{Z}_N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83889em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">Z</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>呢</h2>
+<h3 id="11-打开markdown中的quicksuggestion功能">1.1 打开markdown中的quickSuggestion功能</h3>
+<ul>
+<li>ctrl+shift+p 搜索setting.json 或者 打开设置右上角点出json</li>
+<li>在setting.json中加入代码</li>
+</ul>
+<pre><code class="language-json"> &quot;[markdown]&quot;: {
+        &quot;editor.wordWrap&quot;: &quot;on&quot;,
+        &quot;editor.quickSuggestions&quot;: true
+    },
+</code></pre>
+<h3 id="12-给markdown的snippet整个json">1.2 给markdown的snippet整个json</h3>
+<ul>
+<li>ctrl+shift+p 搜索snippet 滑到下面找到markdown点它 就会新建一个markdown.json 用于配置markdown语言</li>
+<li>示范代码如下</li>
+</ul>
+<pre><code class="language-json">	&quot;zzn&quot;: {
+		&quot;prefix&quot;: &quot;zzn&quot;,
+		&quot;body&quot;: [
+			&quot;$\\mathbb{Z}_N = Z/NZ$&quot;,
+			&quot;$2&quot;
+		],
+		&quot;description&quot;: &quot;ZZN&quot;
+	}
+</code></pre>
+<h3 id="13-如何处理latex中很多在json中会当作转义字符">1.3 如何处理latex中很多\在json中会当作转义字符</h3>
+<ul>
+<li>见上面的示例代码 本身应为 $\mathbb{Z}_N = Z/NZ$<br>
+在前面再加个\就可以解决这个问题 这句话本身也运用了这个技巧用以不显示latex而显示源代码</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E5%A6%82%E4%BD%95%E5%9C%A8markdown%E4%B8%AD%E6%89%93zzn%E7%9B%B4%E6%8E%A5%E5%87%BAmathbbz_n%E5%91%A2">1. 如何在markdown中打zzn直接出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi mathvariant="double-struck">Z</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">\mathbb{Z}_N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83889em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">Z</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>呢</a>
+<ul>
+<li><a href="#11-%E6%89%93%E5%BC%80markdown%E4%B8%AD%E7%9A%84quicksuggestion%E5%8A%9F%E8%83%BD">1.1 打开markdown中的quickSuggestion功能</a></li>
+<li><a href="#12-%E7%BB%99markdown%E7%9A%84snippet%E6%95%B4%E4%B8%AAjson">1.2 给markdown的snippet整个json</a></li>
+<li><a href="#13-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86latex%E4%B8%AD%E5%BE%88%E5%A4%9A%E5%9C%A8json%E4%B8%AD%E4%BC%9A%E5%BD%93%E4%BD%9C%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6">1.3 如何处理latex中很多\在json中会当作转义字符</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://byakuyaLu.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://byakuyaLu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

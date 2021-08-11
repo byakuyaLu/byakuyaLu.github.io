@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://byakuyaLu.github.io</id>
     <title>Gridea</title>
-    <updated>2021-08-11T02:42:41.206Z</updated>
+    <updated>2021-08-11T02:47:50.221Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://byakuyaLu.github.io"/>
     <link rel="self" href="https://byakuyaLu.github.io/atom.xml"/>
@@ -10,6 +10,44 @@
     <logo>https://byakuyaLu.github.io/images/avatar.png</logo>
     <icon>https://byakuyaLu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[记录一些vsc的设置]]></title>
+        <id>https://byakuyaLu.github.io/post/ji-lu-yi-xie-vsc-de-she-zhi/</id>
+        <link href="https://byakuyaLu.github.io/post/ji-lu-yi-xie-vsc-de-she-zhi/">
+        </link>
+        <updated>2021-08-11T02:45:35.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1-如何在markdown中打zzn直接出mathbbz_n呢">1. 如何在markdown中打zzn直接出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi mathvariant="double-struck">Z</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">\mathbb{Z}_N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83889em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">Z</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>呢</h2>
+<h3 id="11-打开markdown中的quicksuggestion功能">1.1 打开markdown中的quickSuggestion功能</h3>
+<ul>
+<li>ctrl+shift+p 搜索setting.json 或者 打开设置右上角点出json</li>
+<li>在setting.json中加入代码</li>
+</ul>
+<pre><code class="language-json"> &quot;[markdown]&quot;: {
+        &quot;editor.wordWrap&quot;: &quot;on&quot;,
+        &quot;editor.quickSuggestions&quot;: true
+    },
+</code></pre>
+<h3 id="12-给markdown的snippet整个json">1.2 给markdown的snippet整个json</h3>
+<ul>
+<li>ctrl+shift+p 搜索snippet 滑到下面找到markdown点它 就会新建一个markdown.json 用于配置markdown语言</li>
+<li>示范代码如下</li>
+</ul>
+<pre><code class="language-json">	&quot;zzn&quot;: {
+		&quot;prefix&quot;: &quot;zzn&quot;,
+		&quot;body&quot;: [
+			&quot;$\\mathbb{Z}_N = Z/NZ$&quot;,
+			&quot;$2&quot;
+		],
+		&quot;description&quot;: &quot;ZZN&quot;
+	}
+</code></pre>
+<h3 id="13-如何处理latex中很多在json中会当作转义字符">1.3 如何处理latex中很多\在json中会当作转义字符</h3>
+<ul>
+<li>见上面的示例代码 本身应为 $\mathbb{Z}_N = Z/NZ$<br>
+在前面再加个\就可以解决这个问题 这句话本身也运用了这个技巧用以不显示latex而显示源代码</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://byakuyaLu.github.io/post/hello-gridea/</id>
