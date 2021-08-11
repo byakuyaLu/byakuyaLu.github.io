@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://byakuyaLu.github.io</id>
-    <title>Gridea</title>
-    <updated>2021-08-11T02:47:50.221Z</updated>
+    <title>byakuya的隐匿小站</title>
+    <updated>2021-08-11T02:58:08.345Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://byakuyaLu.github.io"/>
     <link rel="self" href="https://byakuyaLu.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>终不似，少年游</subtitle>
     <logo>https://byakuyaLu.github.io/images/avatar.png</logo>
     <icon>https://byakuyaLu.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Gridea</rights>
+    <rights>All rights reserved 2021, byakuya的隐匿小站</rights>
     <entry>
         <title type="html"><![CDATA[记录一些vsc的设置]]></title>
         <id>https://byakuyaLu.github.io/post/ji-lu-yi-xie-vsc-de-she-zhi/</id>
