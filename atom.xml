@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://byakuyaLu.github.io</id>
     <title>byakuya的隐匿小站</title>
-    <updated>2021-09-17T13:40:02.101Z</updated>
+    <updated>2021-09-19T10:14:25.055Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://byakuyaLu.github.io"/>
     <link rel="self" href="https://byakuyaLu.github.io/atom.xml"/>
@@ -11,10 +11,10 @@
     <icon>https://byakuyaLu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, byakuya的隐匿小站</rights>
     <entry>
-        <title type="html"><![CDATA[（不那么rigorous）安全PRG推语义安全SS Stream Cipher]]></title>
-        <id>https://byakuyaLu.github.io/post/bu-na-me-rigorousan-quan-prg-tui-yu-yi-an-quan-ss-stream-cipher/</id>
-        <link href="https://byakuyaLu.github.io/post/bu-na-me-rigorousan-quan-prg-tui-yu-yi-an-quan-ss-stream-cipher/">
+        <title type="html"><![CDATA[记录一些想法]]></title>
+        <id>https://byakuyaLu.github.io/post/ji-lu-yi-xie-xiang-fa/</id>
+        <link href="https://byakuyaLu.github.io/post/ji-lu-yi-xie-xiang-fa/">
         </link>
-        <updated>2021-09-17T13:38:37.000Z</updated>
+        <updated>2021-09-19T06:25:47.000Z</updated>
     </entry>
 </feed>

@@ -1,0 +1,384 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>记录一些想法 | byakuya的隐匿小站</title>
+<link rel="shortcut icon" href="https://byakuyaLu.github.io/favicon.ico?v=1632046461633">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://byakuyaLu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="记录一些想法 | byakuya的隐匿小站 - Atom Feed" href="https://byakuyaLu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="记录一些想法
+
+2021/09/19
+Boneh的课，Chapter Stream Cipher的课后编程作业
+
+https://www.coursera.org/learn/crypto/quiz/KZ9js/week-1-program..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://byakuyaLu.github.io">
+  <img class="avatar" src="https://byakuyaLu.github.io/images/avatar.png?v=1632046461633" alt="">
+  </a>
+  <h1 class="site-title">
+    byakuya的隐匿小站
+  </h1>
+  <p class="site-description">
+    当流星飞过天边，你会许下什么心愿？
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              记录一些想法
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-09-19
+              </span>
+              <span>
+                10 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="记录一些想法">记录一些想法</h1>
+<hr>
+<p>2021/09/19</p>
+<p>Boneh的课，Chapter Stream Cipher的课后编程作业</p>
+<blockquote>
+<p>https://www.coursera.org/learn/crypto/quiz/KZ9js/week-1-programming-assignment-optional/attempt</p>
+</blockquote>
+<p>就是说给十条用同一个key加密的stream cipher, 要求encrypt (也是用同一个Key加密的)第十一条cipher</p>
+<h3 id="思路">思路：</h3>
+<p>观察ascii中空格以及大写A-Z和小写a-z的十六进制编码可以发现以下规律</p>
+<ul>
+<li>空格 xor 字母 相当于字母的大小写互换</li>
+<li>字母 xor 字母 超出字母的范围</li>
+<li>空格 xor 空格 一定是NULL即(0000 0000)</li>
+<li>考虑某两条Cipher <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">C_b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>考虑<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">C_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> xor <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">C_b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">M_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> xor <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">M_b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span></span></span></span> (因为用的同一个key)</li>
+<li>观察Ans的每个字(即8bit)，若在a-z和A-Z的范围内,则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">M_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>M</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">M_b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的对应位置的字就为空格和字母(具体谁为字母谁为空格目前无法确定)</li>
+<li>若超出了字母的范围，那对应位置都为字母</li>
+</ul>
+<p>既然得到了以上结论，那么我们可以先把第十一条和前十条分别xor一下看看结果，如果这样能猜出11st cipher的原文，那我们就可以通过11st cipher的原文和密文得到PRG(K),从而解密其余十条。</p>
+<ul>
+<li>对于某一位，如果出现了一堆字母，那原文就应该为空格</li>
+<li>对于某一位，如果出现了少量的(因为十句话中空格位置相同的概率较低)相同字母，那原文就应该为该字母的大小写反转</li>
+</ul>
+<h3 id="代码设计">代码设计：</h3>
+<p>注意到题目给的都是十六进制字符串</p>
+<p>考虑以下函数</p>
+<pre><code class="language-python">def strxor(a, b):     
+    if len(a) &gt; len(b):
+       return &quot;&quot;.join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a[:len(b)], b)])
+    else:
+       return &quot;&quot;.join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a, b[:len(a)])])
+
+# test of the function strxor
+# &quot;bya&quot;  		 = 0110 0010 0111 1001 0110 0001 
+# &quot;k &quot;  		 = 0110 1011 0010 0000           
+# &quot;bya&quot; xor &quot;ku&quot; = 0000 1001 0101 1001           
+#   			   ?         Y
+
+tmp = strxor(&quot;bya&quot;,&quot;k &quot;)
+for i in tmp:
+	if (i&gt;='a' and i &lt;='z') or (i&gt;='A' and i&lt;='Z' ) :
+		print(i,end='')
+	else:
+		print('?',end='')
+</code></pre>
+<p>即取a,b中的公共部分，获取这部分的每一位字符按位异或(^)，返回异或后得到的字符拼成的串。 代码运行的结果是 &quot;?Y&quot;</p>
+<p>有了这个函数后，进行以下操作</p>
+<ul>
+<li>为了使用这个函数，将题目给的hex字符串变为hex对应ascii码字符的字符串</li>
+<li>More specifically, 将hex字符串每两位对应成ascii中的字符组成新的字符字符串</li>
+<li>变成字符字符串后就能用上面的函数，将前十条cipher分别与目标cipher异或</li>
+<li>异或得到的结果就可以用最开始分析的结论来分析，从而得到11th cipher的原文</li>
+<li><s>我这将一个字符串分成2个2个一组的写法好tm丑啊</s></li>
+</ul>
+<pre><code class="language-python">for cipher in ciphertext:
+	tmp = &quot;&quot;
+	for j in range(0, len(cipher), 2):
+		tmp += chr(int(cipher[j]+cipher[j+1], 16))
+	tmp = strxor(tmp,Aim)
+</code></pre>
+<p>我得到的结果如下</p>
+<pre><code> | |E|C| | |C| | | |T| | |S| | | |E|N| | |X|E| |H|T| | | | | | |G|Q| |A| | | | |A| |O| | | | | | | | |N| | |E| |A| |S| |L| | |E|F| | | |O| |O| | |E|T| | | |B| | |C|T|
+ | | |E| |E| | | | |D|M| | | | | | |L| |S| |N| | | |N|T| | | |N| |O| | | | | |E| | |E| | | | |E| |I|C| | | | |R|A|U| | |R| | | | | | | |N| |O| | | | | | | |T| |N|N|E|
+ | | | | | | | |E| |H| | | |S| | | |U| |S|q|E| | | | |Q|U| | |N| |O| | | | |R| | | |P| | | | | | |D|E| | |V| | |N|U| | |I| | |E|A|K| | |T|M| | |E|F| | | | | | | | | |
+ | | | | | | | | | |T| | | |S| | | |D| | | |D|w| | |N|A|U| | | | | | |N| | | | | | |O| |I| | | | | |I| | | |E| |O| | | | | | |E|G| | | | | | |R| |I| | | | |T| | | |E|
+ | | | | | | |U| |T|W| | | |S| | |E|B| | | |A|w| | | | | | |I| | |R|A|K| | | |E| | |O| |I| |H| | |U| | | | |E| |P| | | |A| | | |E| |E| |N|M| | | |A| | | | | | | | | |
+ | | |R| |E| | | |T|T| | |S| | | | |S|I| | | | | | | |T| | | | | |H| | | |T| | | | | | | | | | |R| |I| | |V| | |E| |S| |E| | | |T| |E| |A| | |R| |R| | |A| |O| | |C| |
+ | | |R| |E| | | |T|T| | |S| | | | |S|I| | | | | | | |O| | | | | |Y| | | | | |E| | |A| |I| | | | | |S|N| | | |R|g| | | |R| | | |N| |E| |O|M| | | | | | | | |E|O| | | |
+ | |E|C| | |C| | | | | | | |S| | | |N| |S|M|H| | | |N|T| | |I| | |I| | | | |R| | | |A| | | |H| | | |A|N| | | | |G|U| | |T|T| | | | | | |T|M| | | | | | | | |U| | | |E|
+ |H|M|P| | | | | | | | | | |Z|A|G| |N| | |C|P| | | | | | | | | | |E|A|S| | | | | |M| |C| | | | | |E|T| | | |I|R|N| | | |L| |H| | | | | |C| | | | |E|T| | | | | | | | |
+t| | |E|S| | | | | |S| |E| | | | | |D| | |Y|T| | | | |R| |S|A| |W| |W| |S| | | | | |N| | |P| | | | |T| |E| | |R|T| | |E|A| | |E|O| |E|Y|W| | | | |N| |H| |N|R|O| | | |
+</code></pre>
+<p>那么大概可以猜出原文</p>
+<pre><code>T|h|e| |s|e|c|u|e|t| |m|e|s|s|a|g|e| |i|s| | |W|h|t|n| | u|s|i|n|g| |a| |s|t|r|e|a|m| |c|i|p|h|e|r| ||n|e|v|e|r| |u|s|e| |t|h|e| |k|e|y| |m|o|r|e| |t|h|a|n| |o|n|c|e 
+</code></pre>
+<p>运用脑子让它变得合理些（也就是纠正一下拼写）</p>
+<pre><code>The secret message is: When using a stream cipher, never use the key more than once 
+</code></pre>
+<p>注意，我按照逻辑改了一个字母，且is和cipher两个单词后面都有两个空格，按逻辑来说应该是有两个符号,就加上了 : 和 ，</p>
+<p>现在，我们好奇PRG(K)应该是啥，只需把11st cipher的密文和原文xor一下就知道了</p>
+<ul>
+<li>这里就能体会到key只用一次的重要性</li>
+<li>不知道之后的nounce是怎么处理使得key可以重复用的</li>
+</ul>
+<p>把 &quot;The secret message is: when  using a stream cipher, never use the key more than once &quot;</p>
+<p>现在，获得key,</p>
+<pre><code class="language-python">Pkey = &quot;The secret message is: When using a stream cipher, never use the key more than once&quot;
+
+key = strxor(Aim,Pkey)
+</code></pre>
+<p>现在，把用最初提到的xor函数，将1st-10th的密文与key xor 可以得到十个句子</p>
+<p>句子很奇怪，于是我把Pkey中的When 改成了when才稍微好一点</p>
+<p>但还是挺奇怪的</p>
+<pre><code>We can factor the numbeR 15 with quantum computers. We can also factor the number 1
+Euler would probably enJoy that now his theorem becomes a corner stone of crypto -
+The nice thing about KeEyloq is now we cryptographers can drive a lot of fancy cars
+The ciphertext producedby a weak encryption algorithm looks as good as ciphertext
+You don't want to buy aset of car keys from a guy who specializes in stealing cars
+There are two types of Cryptography - that which will keep secrets safe from your l
+There are two types of Cyptography: one that allows the Government to use brute for
+We can see the point whEre the chip is unhappy if a wrong bit is sent and consumes
+A (private-key)  encrypTion scheme states 3 algorithms, namely a procedure for gene
+ The Concise OxfordDictIonary (2006) deï¬nes crypto as the art of  writing o r sol
+</code></pre>
+<p>Source code:</p>
+<pre><code class="language-python">ciphertext = ['315c4eeaa8b5f8aaf9174145bf43e1784b8fa00dc71d885a804e5ee9fa40b16349c146fb778cdf2d3aff021dfff5b403b510d0d0455468aeb98622b137dae857553ccd8883a7bc37520e06e515d22c954eba5025b8cc57ee59418ce7dc6bc41556bdb36bbca3e8774301fbcaa3b83b220809560987815f65286764703de0f3d524400a19b159610b11ef3e','234c02ecbbfbafa3ed18510abd11fa724fcda2018a1a8342cf064bbde548b12b07df44ba7191d9606ef4081ffde5ad46a5069d9f7f543bedb9c861bf29c7e205132eda9382b0bc2c5c4b45f919cf3a9f1cb74151f6d551f4480c82b2cb24cc5b028aa76eb7b4ab24171ab3cdadb8356f','32510ba9a7b2bba9b8005d43a304b5714cc0bb0c8a34884dd91304b8ad40b62b07df44ba6e9d8a2368e51d04e0e7b207b70b9b8261112bacb6c866a232dfe257527dc29398f5f3251a0d47e503c66e935de81230b59b7afb5f41afa8d661cb','32510ba9aab2a8a4fd06414fb517b5605cc0aa0dc91a8908c2064ba8ad5ea06a029056f47a8ad3306ef5021eafe1ac01a81197847a5c68a1b78769a37bc8f4575432c198ccb4ef63590256e305cd3a9544ee4160ead45aef520489e7da7d835402bca670bda8eb775200b8dabbba246b130f040d8ec6447e2c767f3d30ed81ea2e4c1404e1315a1010e7229be6636aaa',
+'3f561ba9adb4b6ebec54424ba317b564418fac0dd35f8c08d31a1fe9e24fe56808c213f17c81d9607cee021dafe1e001b21ade877a5e68bea88d61b93ac5ee0d562e8e9582f5ef375f0a4ae20ed86e935de81230b59b73fb4302cd95d770c65b40aaa065f2a5e33a5a0bb5dcaba43722130f042f8ec85b7c2070',
+'32510bfbacfbb9befd54415da243e1695ecabd58c519cd4bd2061bbde24eb76a19d84aba34d8de287be84d07e7e9a30ee714979c7e1123a8bd9822a33ecaf512472e8e8f8db3f9635c1949e640c621854eba0d79eccf52ff111284b4cc61d11902aebc66f2b2e436434eacc0aba938220b084800c2ca4e693522643573b2c4ce35050b0cf774201f0fe52ac9f26d71b6cf61a711cc229f77ace7aa88a2f19983122b11be87a59c355d25f8e4',
+'32510bfbacfbb9befd54415da243e1695ecabd58c519cd4bd90f1fa6ea5ba47b01c909ba7696cf606ef40c04afe1ac0aa8148dd066592ded9f8774b529c7ea125d298e8883f5e9305f4b44f915cb2bd05af51373fd9b4af511039fa2d96f83414aaaf261bda2e97b170fb5cce2a53e675c154c0d9681596934777e2275b381ce2e40582afe67650b13e72287ff2270abcf73bb028932836fbdecfecee0a3b894473c1bbeb6b4913a536ce4f9b13f1efff71ea313c8661dd9a4ce',
+'315c4eeaa8b5f8bffd11155ea506b56041c6a00c8a08854dd21a4bbde54ce56801d943ba708b8a3574f40c00fff9e00fa1439fd0654327a3bfc860b92f89ee04132ecb9298f5fd2d5e4b45e40ecc3b9d59e9417df7c95bba410e9aa2ca24c5474da2f276baa3ac325918b2daada43d6712150441c2e04f6565517f317da9d3',
+'271946f9bbb2aeadec111841a81abc300ecaa01bd8069d5cc91005e9fe4aad6e04d513e96d99de2569bc5e50eeeca709b50a8a987f4264edb6896fb537d0a716132ddc938fb0f836480e06ed0fcd6e9759f40462f9cf57f4564186a2c1778f1543efa270bda5e933421cbe88a4a52222190f471e9bd15f652b653b7071aec59a2705081ffe72651d08f822c9ed6d76e48b63ab15d0208573a7eef027',
+'466d06ece998b7a2fb1d464fed2ced7641ddaa3cc31c9941cf110abbf409ed39598005b3399ccfafb61d0315fca0a314be138a9f32503bedac8067f03adbf3575c3b8edc9ba7f537530541ab0f9f3cd04ff50d66f1d559ba520e89a2cb2a83'
+]
+
+Aimtext = &quot;32510ba9babebbbefd001547a810e67149caee11d945cd7fc81a05e9f85aac650e9052ba6a8cd8257bf14d13e6f0a803b54fde9e77472dbff89d71b57bddef121336cb85ccb8f3315f4b52e301d16e9f52f904&quot;
+
+
+def strxor(a, b):     # xor two strings of different lengths
+    if len(a) &gt; len(b):
+       return &quot;&quot;.join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a[:len(b)], b)])
+    else:
+       return &quot;&quot;.join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a, b[:len(a)])])
+
+
+# test of the function strxor
+# &quot;bya&quot;  		 = 0110 0010 0111 1001 0110 0001 
+# &quot;k &quot;  		 = 0110 1011 0010 0000           
+# &quot;bya&quot; xor &quot;ku&quot; = 0000 1001 0101 1001           
+#   			   ?         Y
+
+
+# tmp = strxor(&quot;bya&quot;,&quot;k &quot;)
+# for i in tmp:
+# 	if (i&gt;='a' and i &lt;='z') or (i&gt;='A' and i&lt;='Z' ) :
+# 		print(i,end='')
+# 	else:
+# 		print('?',end='')
+
+#  题目所给的ciphertext都是hex的，也就是两位可以决定一个字符
+
+
+
+
+# 把11st cipher 与前十条cipher分别xor
+
+Aciphertext = []
+Aim = &quot;&quot;
+for i in range(0, len(Aimtext), 2):
+	Aim += chr(int((Aimtext[i]+Aimtext[i+1]),16))    
+
+# # Aimtext[i]+Aimtext[i+1] 是两个十六进制字符，共同决定一个ascii字符
+# # 要获得这个ascii字符，先用int((Aimtext[i]+Aimtext[i+1]),16)将16进制下的这两个字符化为10进制
+# # 再由chr()获取这个十进制在ascii中对应的字符
+# # 以 j (0x6a) (106) 为例 下面程序的结果为 106 j j
+# print(int('6'+'a',16))
+# print(chr(int('6'+'a',16)))
+# print(chr(106))
+
+for cipher in ciphertext:
+	tmp = &quot;&quot;
+	for j in range(0, len(cipher), 2):
+		tmp += chr(int(cipher[j]+cipher[j+1], 16))
+	Aciphertext.append(tmp)
+	tmp = strxor(tmp,Aim)
+	# for i in tmp:
+	# 	if (i&gt;='a' and i &lt;='z') or (i&gt;='A' and i&lt;='Z' ) or (i=='.') or (i=='?') or (i=='!') or (i==':') :
+	# 		print(i,end='|')
+	# 	else:
+	# 		print(' ',end='|')
+
+	# print()
+
+
+
+
+
+Pkey = &quot;The secret message is: when using a stream cipher, never use the key more than once&quot;
+
+
+# print(strxor(Aciphertext[0],strxor(Aim,Pkey)))
+key = strxor(Aim,Pkey)
+
+for i in Aciphertext:
+	print(strxor(i,key))
+
+
+
+#  尝试输出16进制的key
+# HPkey = &quot;&quot;
+# for i in Pkey:
+# 	tmp = hex(ord(i))[2:]
+# 	HPkey += tmp
+
+
+</code></pre>
+<hr>
+<h2 id="epilogue">Epilogue</h2>
+<ul>
+<li>初稿完成于没空调又热的要死突然还下雨了回又回不去的20210919</li>
+<li>感谢曹老师的帮助</li>
+<li>虽然还原出来了，但11st cipher的原文中的 : ,以及When的w变成小写，都是强行试出来或者参考别人的改出来的，不然还原出来的句子一半是乱码</li>
+<li>中间试图输出过16进制的key和ascii形式的key 就很离谱的和别人求出的key完全不一样</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95">记录一些想法</a><br>
+*
+<ul>
+<li><a href="#%E6%80%9D%E8%B7%AF">思路：</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1">代码设计：</a></li>
+<li><a href="#epilogue">Epilogue</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://byakuyaLu.github.io/post/bu-na-me-rigorousan-quan-prg-tui-yu-yi-an-quan-ss-stream-cipher/">
+              <h3 class="post-title">
+                （不那么rigorous）安全PRG推语义安全SS Stream Cipher
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Old Articles: byakuya.xyz
+Mail: byakuyaLu@qq.com
+  <a class="rss" href="https://byakuyaLu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
