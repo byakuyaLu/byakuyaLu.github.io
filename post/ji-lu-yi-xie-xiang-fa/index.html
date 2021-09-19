@@ -2,21 +2,18 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>记录一些想法 | byakuya的隐匿小站</title>
-<link rel="shortcut icon" href="https://byakuyaLu.github.io/favicon.ico?v=1632046461633">
+<title>试着破解Stream Cipher与Many times Pad的组合 | byakuya的隐匿小站</title>
+<link rel="shortcut icon" href="https://byakuyaLu.github.io/favicon.ico?v=1632047889025">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://byakuyaLu.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="记录一些想法 | byakuya的隐匿小站 - Atom Feed" href="https://byakuyaLu.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="试着破解Stream Cipher与Many times Pad的组合 | byakuya的隐匿小站 - Atom Feed" href="https://byakuyaLu.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="记录一些想法
+    <meta name="description" content="Boneh的课，Chapter Stream Cipher的课后编程作业 题目如下
 
-2021/09/19
-Boneh的课，Chapter Stream Cipher的课后编程作业
-
-https://www.coursera.org/learn/crypto/quiz/KZ9js/week-1-program..." />
+https://www.coursera.org/learn/crypto/quiz/KZ9js/week-1-programming-assignmen..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -26,7 +23,7 @@ https://www.coursera.org/learn/crypto/quiz/KZ9js/week-1-program..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://byakuyaLu.github.io">
-  <img class="avatar" src="https://byakuyaLu.github.io/images/avatar.png?v=1632046461633" alt="">
+  <img class="avatar" src="https://byakuyaLu.github.io/images/avatar.png?v=1632047889025" alt="">
   </a>
   <h1 class="site-title">
     byakuya的隐匿小站
@@ -79,7 +76,7 @@ https://www.coursera.org/learn/crypto/quiz/KZ9js/week-1-program..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              记录一些想法
+              试着破解Stream Cipher与Many times Pad的组合
             </h2>
             <div class="post-info">
               <span>
@@ -93,10 +90,7 @@ https://www.coursera.org/learn/crypto/quiz/KZ9js/week-1-program..." />
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="记录一些想法">记录一些想法</h1>
-<hr>
-<p>2021/09/19</p>
-<p>Boneh的课，Chapter Stream Cipher的课后编程作业</p>
+                <p>Boneh的课，Chapter Stream Cipher的课后编程作业 题目如下</p>
 <blockquote>
 <p>https://www.coursera.org/learn/crypto/quiz/KZ9js/week-1-programming-assignment-optional/attempt</p>
 </blockquote>
@@ -185,18 +179,16 @@ t| | |E|S| | | | | |S| |E| | | | | |D| | |Y|T| | | | |R| |S|A| |W| |W| |S| | | |
 key = strxor(Aim,Pkey)
 </code></pre>
 <p>现在，把用最初提到的xor函数，将1st-10th的密文与key xor 可以得到十个句子</p>
-<p>句子很奇怪，于是我把Pkey中的When 改成了when才稍微好一点</p>
-<p>但还是挺奇怪的</p>
-<pre><code>We can factor the numbeR 15 with quantum computers. We can also factor the number 1
-Euler would probably enJoy that now his theorem becomes a corner stone of crypto -
-The nice thing about KeEyloq is now we cryptographers can drive a lot of fancy cars
-The ciphertext producedby a weak encryption algorithm looks as good as ciphertext
-You don't want to buy aset of car keys from a guy who specializes in stealing cars
-There are two types of Cryptography - that which will keep secrets safe from your l
-There are two types of Cyptography: one that allows the Government to use brute for
-We can see the point whEre the chip is unhappy if a wrong bit is sent and consumes
-A (private-key)  encrypTion scheme states 3 algorithms, namely a procedure for gene
- The Concise OxfordDictIonary (2006) deï¬nes crypto as the art of  writing o r sol
+<pre><code>We can factor the number 15 with quantum computers. We can also factor the number 1
+Euler would probably enjoy that now his theorem becomes a corner stone of crypto -
+The nice thing about Keeyloq is now we cryptographers can drive a lot of fancy cars
+The ciphertext produced by a weak encryption algorithm looks as good as ciphertext
+You don't want to buy a set of car keys from a guy who specializes in stealing cars
+There are two types of cryptography - that which will keep secrets safe from your l
+There are two types of cyptography: one that allows the Government to use brute for
+We can see the point where the chip is unhappy if a wrong bit is sent and consumes
+A (private-key)  encryption scheme states 3 algorithms, namely a procedure for gene
+ The Concise OxfordDictionary (2006) deï¬nes crypto as the art of  writing o r sol
 </code></pre>
 <p>Source code:</p>
 <pre><code class="language-python">ciphertext = ['315c4eeaa8b5f8aaf9174145bf43e1784b8fa00dc71d885a804e5ee9fa40b16349c146fb778cdf2d3aff021dfff5b403b510d0d0455468aeb98622b137dae857553ccd8883a7bc37520e06e515d22c954eba5025b8cc57ee59418ce7dc6bc41556bdb36bbca3e8774301fbcaa3b83b220809560987815f65286764703de0f3d524400a19b159610b11ef3e','234c02ecbbfbafa3ed18510abd11fa724fcda2018a1a8342cf064bbde548b12b07df44ba7191d9606ef4081ffde5ad46a5069d9f7f543bedb9c861bf29c7e205132eda9382b0bc2c5c4b45f919cf3a9f1cb74151f6d551f4480c82b2cb24cc5b028aa76eb7b4ab24171ab3cdadb8356f','32510ba9a7b2bba9b8005d43a304b5714cc0bb0c8a34884dd91304b8ad40b62b07df44ba6e9d8a2368e51d04e0e7b207b70b9b8261112bacb6c866a232dfe257527dc29398f5f3251a0d47e503c66e935de81230b59b7afb5f41afa8d661cb','32510ba9aab2a8a4fd06414fb517b5605cc0aa0dc91a8908c2064ba8ad5ea06a029056f47a8ad3306ef5021eafe1ac01a81197847a5c68a1b78769a37bc8f4575432c198ccb4ef63590256e305cd3a9544ee4160ead45aef520489e7da7d835402bca670bda8eb775200b8dabbba246b130f040d8ec6447e2c767f3d30ed81ea2e4c1404e1315a1010e7229be6636aaa',
@@ -270,7 +262,7 @@ for cipher in ciphertext:
 
 
 
-Pkey = &quot;The secret message is: when using a stream cipher, never use the key more than once&quot;
+Pkey = &quot;The secret message is: When using a stream cipher, never use the key more than once&quot;
 
 
 # print(strxor(Aciphertext[0],strxor(Aim,Pkey)))
@@ -294,18 +286,21 @@ for i in Aciphertext:
 <ul>
 <li>初稿完成于没空调又热的要死突然还下雨了回又回不去的20210919</li>
 <li>感谢曹老师的帮助</li>
-<li>虽然还原出来了，但11st cipher的原文中的 : ,以及When的w变成小写，都是强行试出来或者参考别人的改出来的，不然还原出来的句子一半是乱码</li>
+<li>虽然还原出来了，但11st cipher的原文中的 : ,都是强行试出来的，不然还原出来的句子一半是乱码</li>
 <li>中间试图输出过16进制的key和ascii形式的key 就很离谱的和别人求出的key完全不一样</li>
 </ul>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95">记录一些想法</a><br>
-*
+<li>
+<ul>
+<li>
 <ul>
 <li><a href="#%E6%80%9D%E8%B7%AF">思路：</a></li>
 <li><a href="#%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1">代码设计：</a></li>
+</ul>
+</li>
 <li><a href="#epilogue">Epilogue</a></li>
 </ul>
 </li>
