@@ -1,0 +1,244 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>记录一下ascii字符和hex编码转换，以及如何xor两个ascii字符串 | byakuya的隐匿小站</title>
+<link rel="shortcut icon" href="https://byakuyaLu.github.io/favicon.ico?v=1632111982021">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://byakuyaLu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="记录一下ascii字符和hex编码转换，以及如何xor两个ascii字符串 | byakuya的隐匿小站 - Atom Feed" href="https://byakuyaLu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="记录一下ascii字符和hex编码转换，以及如何xor两个ascii字符串
+以一个简单的题目介绍这个流程
+
+message1 =  &quot;attack at dawn&quot;  message2 = &quot;attack at..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://byakuyaLu.github.io">
+  <img class="avatar" src="https://byakuyaLu.github.io/images/avatar.png?v=1632111982021" alt="">
+  </a>
+  <h1 class="site-title">
+    byakuya的隐匿小站
+  </h1>
+  <p class="site-description">
+    当流星飞过天边，你会许下什么心愿？
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              记录一下ascii字符和hex编码转换，以及如何xor两个ascii字符串
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-09-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://byakuyaLu.github.io/post-images/ji-lu-yi-xia-ascii-zi-fu-he-hex-bian-ma-zhuan-huan-yi-ji-ru-he-xor-liang-ge-ascii-zi-fu-chuan.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="记录一下ascii字符和hex编码转换以及如何xor两个ascii字符串">记录一下ascii字符和hex编码转换，以及如何xor两个ascii字符串</h1>
+<p>以一个简单的题目介绍这个流程</p>
+<blockquote>
+<p>message1 =  &quot;attack at dawn&quot; </br> message2 = &quot;attack at dusk&quot;</br> cipher1 = &quot;09e1c5f70a65ac519458e7e53f36&quot;</p>
+</blockquote>
+<p>给定以上条件，cipher1是message1用key加密后的16进制表示，问message2用相同的key加密后的16进制表示, 并求出key的16进制表示。</p>
+<p>主要想解决的问题是，各种编码以及进制问题</p>
+<ul>
+<li>一般题目给出message的ascii字符原文</li>
+<li>加密后的16进制ascii密文</li>
+<li>16进制的PRG(k)</li>
+</ul>
+<p>为了能让他们可以xor 总结一下用过的思想</p>
+<p>首先是用于xor的函数</p>
+<pre><code class="language-python">def strxor(a, b):     # xor two strings of different lengths
+    if len(a) &gt; len(b):
+       return &quot;&quot;.join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a[:len(b)], b)])
+    else:
+       return &quot;&quot;.join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a, b[:len(a)])])
+
+# # test of the function strxor
+# # &quot;bya&quot;  		   = 0110 0010 0111 1001 0110 0001 
+# # &quot;k &quot;  		   = 0110 1011 0010 0000           
+# # &quot;bya&quot; xor &quot;ku&quot; = 0000 1001 0101 1001           
+# #   			     ?         Y
+</code></pre>
+<ul>
+<li>可用于不等长字符串</li>
+<li>用于ascii字符字符串(而不是ascii编码串)</li>
+<li>ord获取字符的十进制编码，异或后用chr获得新编码对应字符串</li>
+<li>一般message原文</li>
+</ul>
+<p>那么16进制ascii状态的密文怎么转化成可以用strxor函数的ascii字符密文呢？</p>
+<pre><code class="language-python">ascii_cipher1 = &quot;&quot;
+for i in range(0,len(hex_cipher1),2):
+	ascii_cipher1 += chr(int(hex_cipher1[i]+hex_cipher1[i+1],16))
+</code></pre>
+<ul>
+<li>16进制ascii编码中，2位决定一个ascii字符</li>
+<li>int(&quot;str&quot;,16) 是将字符str作为16进制编码理解并转换为int</li>
+<li>chr(integer) 是将十进制编码integer转化为它在ascii中对应的字符</li>
+<li>加起来的串串ascii_cipher1就是ascii16进制串对应的ascii字符串</li>
+</ul>
+<p>接下来如何获取key以及如何用key加密message2呢 直接调strxor函数就好</p>
+<pre><code class="language-python">ascii_key = strxor(ascii_message1,ascii_cipher1)
+ascii_cipher2 = strxor(ascii_message2,ascii_key)
+</code></pre>
+<ul>
+<li>这里一般不输出，因为输出了也是一堆ascii表中不一定找得到的奇怪字符</li>
+<li>为了能输出，还要会如何将ascii字符串转化为ascii 16进制串</li>
+</ul>
+<pre><code class="language-python">hex_key = &quot;&quot;
+for i in ascii_key:
+   hex_key += (hex(ord(i))[2:].zfill(2))
+print(hex_key)
+
+hex_cipher2 = &quot;&quot;
+for i in ascii_cipher2:
+	hex_cipher2 += (hex(ord(i))[2:].zfill(2))  
+print(hex_cipher2)
+</code></pre>
+<ul>
+<li>遍历字符串中每个字符</li>
+<li>ord(char)得到char对应的十进制ascii编码  参数单字符str，返回int</li>
+<li>hex(integer) 得到integer对应的十六进制表示 参数int，返回str</li>
+<li>hex返回时会自动加上0x, [2:]是为了处理掉这个0x</li>
+<li>hex会自动省略前导0，如0x0a会变成0xa，所以用zfill用0在左边补满2位</li>
+</ul>
+<p>最后就能得到问题的答案</p>
+<pre><code>6895b196690e8c30e07883844858
+09e1c5f70a65ac519458e7f13b33
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8Bascii%E5%AD%97%E7%AC%A6%E5%92%8Chex%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95xor%E4%B8%A4%E4%B8%AAascii%E5%AD%97%E7%AC%A6%E4%B8%B2">记录一下ascii字符和hex编码转换，以及如何xor两个ascii字符串</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://byakuyaLu.github.io/post/ji-lu-yi-xie-xiang-fa/">
+              <h3 class="post-title">
+                试着破解Stream Cipher与Many times Pad的组合
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Mail: byakuyaLu@qq.com
+  <a class="rss" href="https://byakuyaLu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
